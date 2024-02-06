@@ -12,7 +12,7 @@
 **Context:** Technology to be used for building the API tier.  
 **Decision:** Python Flask will be used to build the API tier.  
 **Rationale:** The client has staff proficient in Python. It's their preferred language.  
-**Consequences:** Python will require more infrastructure should this scale-out as Python is not as efficient of a language. Client doesn't expect that to be a problem.
+**Consequences:** Python will require more infrastructure should this scale-out as Python is not as efficient of a language. Client doesn't expect that to be a problem.  
 **Date:** Feb 6, 2024
 
 
