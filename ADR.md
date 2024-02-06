@@ -8,6 +8,7 @@
 **Date:** Feb 6, 2024
 
 
+## API Tier Tech Stack ##
 **Context:** Technology to be used for building the API tier.  
 **Decision:** Python Flask will be used to build the API tier.  
 **Rationale:** The client has staff proficient in Python. It's their preferred language.  
