@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+print("LoanCalculator starting")
+
 @app.route('/')
 def hello():
     return 'Hello, World!'
@@ -87,5 +89,5 @@ def create_loan_payment_data(months, principal, interest_rate) :
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
 
