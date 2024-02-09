@@ -24,6 +24,16 @@ services:
     image: loan-calculator-data:latest
     ports:
       - "5050:5000"
+    depends_on:
+      - memcached
+
+  memcached:
+    image: bitnami/memcached:latest
+    ports:
+      - "11211:11211"
+    #command: ["-m", "64"]
+    #restart: always
+
 
     
     
