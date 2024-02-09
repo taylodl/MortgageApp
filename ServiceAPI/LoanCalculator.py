@@ -1,9 +1,30 @@
 from decimal import Decimal, ROUND_HALF_UP
 from flask import Flask, request, jsonify
+import requests
+import json
+import os
 
 app = Flask(__name__)
 
 print("LoanCalculator starting")
+
+data_store_url = os.environ.get("STORE_URL")
+data_retrieve_url = os.environ.get("RETRIEVE_URL")
+test_url = os.environ.get("TEST_URL")
+
+# Service to store data to data tier
+def store_data(months, amount, apr, loan_data):
+     params = {'months': months, 'amount': amount, 'apr': apr}
+     headers = {'Content-Type': 'application/json'}
+     response = requests.post(data_store_url, params=params, json=loan_data, headers=headers)
+     return response.json
+
+# Service to retrieve data from the data tier
+def retrieve_data(months, amount, apr):
+     print(f"data_retrieve_url={data_retrieve_url}")
+     params = {'months': months, 'amount': amount, 'apr': apr}
+     response = requests.get(data_retrieve_url, params)
+     return response.status_code, response.json
 
 @app.route('/')
 def hello():
@@ -21,9 +42,17 @@ def loanCalculator() :
         apr = float(apr_str)
     except ValueError:
         return {'error' : 'Values must be numeric'}, 400 
+    
+    # First check the data tier and see if we've computed this before
+    # status_code, loan_data = retrieve_data(months, amount, apr)
+    # 404 indicates the data tier does not have the key
+    #if status_code != 404:
+    #    return jsonify(loan_data)
 
-    #return jsonify({"months" : months, "amount" : amount, "apr" : apr})
-    return jsonify(create_loan_payment_data(months, amount, apr))
+    loan_data = create_loan_payment_data(months, amount, apr)
+    json_data = json.dumps(loan_data)
+    store_data(months, amount, apr, json_data)
+    return json_data
 
 @app.route('/testing')
 def test() :

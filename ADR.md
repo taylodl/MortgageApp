@@ -22,6 +22,13 @@
 **Consequence:** We'll be using Jinga2 scripting in HTML files. This feels an awful like like PHP programming.  
 **Date:** Feb 7, 2024  
 
+## Data Tier Tech Stack ##
+**Context:** Technology to be used for building the data tier.  
+**Decision:** The data tier will be accessed via a service. This allows us to change the actual implementation to use whatever backing store we desire. In the POC we'll be using memcached.  
+**Rationale:** We're planning on migrating this to Kubernetes anyway. We can deal with data volumes and all that stuff then. This gets the interfaces defined so we can proceed with the implementation and we do get caching.  
+**Consequence:** This is work we were going to have to address when we migrated to Kubernetes, but by utilizing a service interface it will only be this container (pod) that's affected.  
+**Date:** Feb 8, 2024
+
 
 
 
