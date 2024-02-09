@@ -15,4 +15,13 @@
 **Consequences:** Python will require more infrastructure should this scale-out as Python is not as efficient of a language. Client doesn't expect that to be a problem.  
 **Date:** Feb 6, 2024
 
+## UI Tier Tech Stack ##
+**Context:** Technology to be used for building the UI tier.
+**Decision:** Python Flask will be used to build the UI tier.
+**Rationale:** It's a POC and we don't have to explicitly run a web server.
+**Consequence:** We'll be using Jinga2 scripting in HTML files. This feels an awful like like PHP programming.
+**Date:** Feb 7, 2024
+
+
+
 
