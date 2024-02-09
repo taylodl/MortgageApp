@@ -4,3 +4,11 @@ This application is a POC to show the client the basics of the mortgage calculat
 
 The Architecture Decision Record (ADR) can be found [here.](ADR.md)
 
+The Lessons Learned during this exercise can be found [here](LessonsLearned.md)
+
+To build run ./build.sh
+
+To run run ./run.sh
+
+You must have Docker installed on your machine.
+
