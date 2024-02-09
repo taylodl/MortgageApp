@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  ui:
+    image: loan-calculator-ui:latest
+    ports:
+      - "80:80"
+    environment:
+      SERVICE_URL: http://api:5000/loancalculator
+    depends_on:
+      - api
+
+  api:
+    image: loan-calculator-api:latest
+    ports:
+      - "5000:5000"
+
+    
+    
